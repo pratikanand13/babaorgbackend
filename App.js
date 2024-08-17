@@ -8,10 +8,7 @@ const cors = require("cors");
 // Allow requests from your frontend's origin (adjust to match your frontend's deployment URL)
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://your-frontend-domain.vercel.app",
-    ], // Add your frontend domain
+    origin: "*", // Add your frontend domain
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // Include cookies if your frontend needs them
   })
