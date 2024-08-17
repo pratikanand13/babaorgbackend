@@ -1,15 +1,27 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "app.js",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/app.js"
-      }
-    ]
-  }
+  "version": 2,
+  "builds": [
+    {
+      "src": "App.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/auth/(.*)",
+      "dest": "/routes/auth.js"
+    },
+    {
+      "src": "/tasks/(.*)",
+      "dest": "/routes/tasks.js"
+    },
+    {
+      "src": "/user/(.*)",
+      "dest": "/routes/user.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/App.js"
+    }
+  ]
+}
