@@ -5,15 +5,31 @@ require("./src/utils/ConnectMongo");
 
 const cors = require("cors");
 
+// Allow requests from your frontend's origin (adjust to match your frontend's deployment URL)
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://your-frontend-domain.vercel.app",
+    ], // Add your frontend domain
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true, // Include cookies if your frontend needs them
+  })
+);
+
+app.use(express.json());
+
 const userAPI = require("./src/routes/user");
 const taskAPI = require("./src/routes/tasks");
 
-app.use(cors());
-app.use(express.json());
 app.use("/api/v1", userAPI);
 app.use("/api/v2", taskAPI);
 
-const port = process.env.PORT || 3000; // You can use environment variables for port configuration
+// Listen on the correct port (handled automatically by Vercel)
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log("Server is running on port :", ` ${port}`);
 });
+
+// Export the Express app for Vercel
+module.exports = app;
