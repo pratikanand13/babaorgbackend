@@ -2,14 +2,14 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 require("./src/utils/ConnectMongo");
-
+const public = require('./public')
 const cors = require("cors");
 
 // Allow requests from your frontend's origin (adjust to match your frontend's deployment URL)
 app.use(
   cors()
 );
-
+app.use(express.static('public'));
 app.use(express.json());
 
 const userAPI = require("./src/routes/user");
