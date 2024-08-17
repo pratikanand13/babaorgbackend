@@ -7,7 +7,7 @@ const logMiddleware = require('../middlewares/logMiddleware')
 router.use(logMiddleware)
 // username, email, password
 router.post("/sign-in", async (req, res) => {
-  console.log(req.body.username, req.body.email, req.body.password);
+  // console.log(req.body.username, req.body.email, req.body.password);
   try {
     const { username, email, password } = req.body;
 
@@ -50,7 +50,7 @@ router.post("/sign-in", async (req, res) => {
       return res
         .status(200)
         .json({ success: true, message: "Sign-In Successfully" });
-    } else {
+    } else {f
       return res.status(400).json({
         success: false,
         message: "Invalid Payload",
