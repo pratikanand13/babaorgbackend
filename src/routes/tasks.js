@@ -3,7 +3,8 @@ const Tasks = require("../models/tasks");
 const User = require("../models/User");
 // const auth = require("./auth");
 const authenticateToken = require("./auth");
-
+const logMiddleware = require('../middlewares/logMiddleware')
+router.use(logMiddleware)
 // title, desc
 router.post("/create-task", authenticateToken, async (req, res) => {
   console.log(req.body.title, req.body.desc);

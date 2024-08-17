@@ -3,7 +3,8 @@ const validator = require("validator");
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+const logMiddleware = require('../middlewares/logMiddleware')
+router.use(logMiddleware)
 // username, email, password
 router.post("/sign-in", async (req, res) => {
   console.log(req.body.username, req.body.email, req.body.password);
