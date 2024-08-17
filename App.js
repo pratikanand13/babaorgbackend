@@ -7,11 +7,7 @@ const cors = require("cors");
 
 // Allow requests from your frontend's origin (adjust to match your frontend's deployment URL)
 app.use(
-  cors({
-    origin: "*", // Add your frontend domain
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // Include cookies if your frontend needs them
-  })
+  cors()
 );
 
 app.use(express.json());
